@@ -1,4 +1,6 @@
 
+local Global = require("src.global")
+
 local Object = {}
 
 function Object:new(position, collision, update, draw)
@@ -14,6 +16,10 @@ function Object:new(position, collision, update, draw)
   self.__index = self
 
   return o
+end
+
+function Object:create(name, obj)
+	Global.objectList[name] = obj
 end
 
 return Object

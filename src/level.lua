@@ -1,6 +1,4 @@
 
-local Object = require("object")
-
 local Level = {}
 
 Level.objects = {}
@@ -11,6 +9,7 @@ function Level.createObject(obj, x, y)
   o.pos.y = y
   
   table.insert(Level.objects, o) 
+	return o
 end
 
 return Level

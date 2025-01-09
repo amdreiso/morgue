@@ -78,8 +78,8 @@ end
 
 function Fovy.vec2(x, y)
 	return {
-		x = x,
-		y = y,
+		x = x or 0,
+		y = y or 0,
 	}
 end
 

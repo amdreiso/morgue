@@ -1,38 +1,24 @@
 
 local Window = require("src.window")
-local Object = require("src.object")
-local Fovy = require("libs.fovy")
-local Level = require("src.level")
-local Global = require("src.global")
+local Player = require("src.player")
 
-local Player = require("src.objects.player")
+local playerOBJ
 
-function void() end
+function love.load()
+	Window.load()
 
+	playerOBJ = Player.new(200, 300)
 
-Global.Player = Level.createObject(Object:new(Fovy.vec2(100, 100), Player.collision, Player.update, Player.draw), 100, 100)
-
-Fovy.printTable(Level.objects)
-
-function love.load() 
-  -- Window stuff
-  love.window.setTitle(Window.title)
-  love.window.setMode(Window.size.width, Window.size.height)
+	for i = 1, 10 do
+		print(math.random(10))
+	end
 end
 
 function love.update(dt)
-  for _, obj in ipairs(Level.objects) do
-    obj.update(obj)
-  end
+	playerOBJ:update(dt)
 end
 
 function love.draw()
-  for _, obj in ipairs(Level.objects) do
-    obj.draw(obj)
-
-		if Global.isDev then
-			love.graphics.rectangle("line", obj.pos.x, obj.pos.y, obj.collision.width, obj.collision.height)
-		end
-  end
+	playerOBJ:draw()
 end
 
